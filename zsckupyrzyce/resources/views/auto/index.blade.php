@@ -17,15 +17,25 @@
             document.querySelector(".wynik").innerHTML = x;
             }
             }
+            var count=1
+            function dodajPozycje(){
+                count++;
+                var p = document.createElement("p");
+                var zawartosc_pozycji ='';
+                zawartosc_pozycji += 'Odległość od: <input type="number" id="x" name="from" data-id="'+count+'"/>';
+                zawartosc_pozycji += 'Odległość do: <input type="number" id="y" name="to" data-id="'+count+'"/>';
+                zawartosc_pozycji += '<button id="add" name="add" onclick="dodajPozycje()">+</button>';
+                zawartosc_pozycji += '<button id="del" name="del" onclick="usunPozycje()">-</button>';
+                p.innerHTML = zawartosc_pozycji;
+                document.querySelector("#putin").appendChild(p);
+            }
             </script>
-            <h1>Biletomat</h1>
-            Odległość od: <input type="number" id="x" name="pole"/>
-            
-            Odległość do: <input type="number" id="y" name="polle"/>
-            
-            <button id="normalny" name="add">+</button>
-            <button id="ulgowy" name="del">-</button>
-            
+            <p id="putin">
+            Odległość od: <input type="number" id="x" name="from" data-id="1"/>
+            Odległość do: <input type="number" id="y" name="to" data-id="1"/>
+            <button id="add" name="add" onclick="dodajPozycje()">+</button>
+            <button id="del" name="del" onclick="usunPozycje()">-</button>
+            </p>
             <!-- <input type="button" id="oblicz" value="PRZELICZ" onclick="oblicz()"/> -->
                 
             <div class="wynik">
