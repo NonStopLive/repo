@@ -31,7 +31,7 @@ p{
                 var zawartosc_pozycji ='';
                 zawartosc_pozycji += '<br>Odległość od: <input type="number" id="x" name="from" data-id="'+count+'"/>';
                 zawartosc_pozycji += ' Odległość do: <input type="number" id="y" name="to" data-id="'+count+'"/>';
-                zawartosc_pozycji += ' <button id="del" name="del" onclick="usunPozycje(this)">-</button>';
+                zawartosc_pozycji += ' <button id="del" name="del" onclick="usunPozycje(this)" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>';
                 p.innerHTML = zawartosc_pozycji;
                 document.querySelector("#putin").appendChild(p);
             }
@@ -44,13 +44,8 @@ p{
             <p id="putin"> <!-- .setAttribute('data-id',x); -->
             Odległość od: <input type="number" id="x" name="from" data-id="1"/>
             Odległość do: <input type="number" id="y" name="to" data-id="1"/>
-            <button id="add" name="add" onclick="dodajPozycje()">+</button>
+            <button id="add" name="add" onclick="dodajPozycje()" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
             </p>
-            
-            <button id="ulgowy" name="del"class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>
-            <button id="normalny" name="add" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
-            
-            Odległość do: <input type="number" id="y" name="polle"/>
             </div>
                 <input type="text" class="form-control" placeholder="Podaj odległość">
                 <div class="input-group-append">
