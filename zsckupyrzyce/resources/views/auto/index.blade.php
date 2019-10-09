@@ -9,6 +9,7 @@ p{
     <script type="text/javascript"> 
         var wynik;
             function oblicz() {
+                /*why are we still here? Just to suffer?*/
               var x = document.querySelector('#x').value;
               var y = document.querySelector('#i').value;
               var normalny = document.querySelector('#normalny').checked;
@@ -24,21 +25,25 @@ p{
             }
             var count=1
             function dodajPozycje(){
+                count++;
                 var p = document.createElement("p");
+                p.setAttribute('data-id', count);
                 var zawartosc_pozycji ='';
-                zawartosc_pozycji += '<br>Odległość od: <input type="number" id="x" name="from"44/>';
-                zawartosc_pozycji += ' Odległość do: <input type="number" id="y" name="to"/>';
-                zawartosc_pozycji += ' <button id="del" name="del" onclick="usunPozycje()">-</button>';
+                zawartosc_pozycji += '<br>Odległość od: <input type="number" id="x" name="from" data-id="'+count+'"/>';
+                zawartosc_pozycji += ' Odległość do: <input type="number" id="y" name="to" data-id="'+count+'"/>';
+                zawartosc_pozycji += ' <button id="del" name="del" onclick="usunPozycje(this)">-</button>';
                 p.innerHTML = zawartosc_pozycji;
                 document.querySelector("#putin").appendChild(p);
             }
-            function usunPozycje(){
+            function usunPozycje(obiekt){
+                console.log(obiekt);
                 
+
             }
             </script>
-            <p id="putin">
-            Odległość od: <input type="number" id="x" name="from"/>
-            Odległość do: <input type="number" id="y" name="to"/>
+            <p id="putin"> <!-- .setAttribute('data-id',x); -->
+            Odległość od: <input type="number" id="x" name="from" data-id="1"/>
+            Odległość do: <input type="number" id="y" name="to" data-id="1"/>
             <button id="add" name="add" onclick="dodajPozycje()">+</button>
             </p>
             <!-- <input type="button" id="oblicz" value="PRZELICZ" onclick="oblicz()"/> -->
