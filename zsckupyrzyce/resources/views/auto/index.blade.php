@@ -46,13 +46,6 @@ p{
             Odległość do: <input type="text" class="form-control" placeholder="Podaj odległość" id="y" name="to" data-id="1"/>
             <button id="add" name="add" onclick="dodajPozycje()" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
             </p>
-<<<<<<< Updated upstream
-=======
-            
-            <button id="add" name="del"class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>
-            <button id="del" name="add" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
-            
->>>>>>> Stashed changes
             </div>
                 <div class="input-group-append">
             <div class="input-group mb-3">
