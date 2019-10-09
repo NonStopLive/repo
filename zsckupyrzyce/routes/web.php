@@ -21,4 +21,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/kalkulator', "AutoController@index");
+Route::get('/kalkulator', "AutoController@index")->name("kalkulator");

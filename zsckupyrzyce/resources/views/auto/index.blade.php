@@ -3,3 +3,4 @@
 <div class="panel">
 dfgdfgfdg
 </div>
+{{route("kalkulator")}}
