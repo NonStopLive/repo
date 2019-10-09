@@ -1,4 +1,9 @@
 @include('head')
+<style>
+p{
+    margin: 0;
+}
+</style>
 <h1>Oblicz poziom zanieczyszen auta</h1>
 <div class="panel">
     <script type="text/javascript"> 
@@ -21,9 +26,9 @@
             function dodajPozycje(){
                 var p = document.createElement("p");
                 var zawartosc_pozycji ='';
-                zawartosc_pozycji += 'Odległość od: <input type="number" id="x" name="from"44/>';
+                zawartosc_pozycji += '<br>Odległość od: <input type="number" id="x" name="from"44/>';
                 zawartosc_pozycji += ' Odległość do: <input type="number" id="y" name="to"/>';
-                zawartosc_pozycji += '<button id="del" name="del" onclick="usunPozycje()">-</button>';
+                zawartosc_pozycji += ' <button id="del" name="del" onclick="usunPozycje()">-</button>';
                 p.innerHTML = zawartosc_pozycji;
                 document.querySelector("#putin").appendChild(p);
             }
@@ -35,7 +40,6 @@
             Odległość od: <input type="number" id="x" name="from"/>
             Odległość do: <input type="number" id="y" name="to"/>
             <button id="add" name="add" onclick="dodajPozycje()">+</button>
-            <button id="del" name="del" onclick="usunPozycje()">-</button>
             </p>
             <!-- <input type="button" id="oblicz" value="PRZELICZ" onclick="oblicz()"/> -->
                 
