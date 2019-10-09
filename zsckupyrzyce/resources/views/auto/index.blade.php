@@ -36,11 +36,21 @@ p{
                 
             }
             </script>
+            <h1>Biletomat</h1>
             <p id="putin">
             Odległość od: <input type="number" id="x" name="from"/>
             Odległość do: <input type="number" id="y" name="to"/>
             <button id="add" name="add" onclick="dodajPozycje()">+</button>
             </p>
+            
+            <button id="ulgowy" name="del"class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>
+            <button id="normalny" name="add" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
+            
+            Odległość do: <input type="number" id="y" name="polle"/>
+            </div>
+                <input type="text" class="form-control" placeholder="Podaj odległość">
+                <div class="input-group-append">
+            <div class="input-group mb-3">
             <!-- <input type="button" id="oblicz" value="PRZELICZ" onclick="oblicz()"/> -->
                 
             <div class="wynik">
