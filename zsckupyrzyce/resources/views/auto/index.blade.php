@@ -42,8 +42,8 @@ p{
             }
             </script>
             <p id="putin"> <!-- .setAttribute('data-id',x); -->
-            Odległość od: <input type="number" class="form-control" placeholder="Podaj odległość" id="x" name="from" data-id="1"/>
-            Odległość do: <input type="number" class="form-control" placeholder="Podaj odległość" id="y" name="to" data-id="1"/>
+            Od: <input type="number" class="form-control" placeholder="Podaj odległość" id="x" name="from" data-id="1"/>
+            Do: <input type="number" class="form-control" placeholder="Podaj odległość" id="y" name="to" data-id="1"/>
             <button id="add" name="add" onclick="dodajPozycje()" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
             </p>
             </div>
