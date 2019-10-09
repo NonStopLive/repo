@@ -29,8 +29,8 @@ p{
                 var p = document.createElement("p");
                 p.setAttribute('data-id', count);
                 var zawartosc_pozycji ='';
-                zawartosc_pozycji += '<br>Odległość od: <input type="text" class="form-control" placeholder="Podaj odległość" id="x" name="from" data-id="'+count+'"/>';
-                zawartosc_pozycji += ' Odległość do: <input type="text" class="form-control" placeholder="Podaj odległość" id="y" name="to" data-id="'+count+'"/>';
+                zawartosc_pozycji += '<br>Odległość od: <input type="number" class="form-control" placeholder="Podaj odległość" id="x" name="from" data-id="'+count+'"/>';
+                zawartosc_pozycji += ' Odległość do: <input type="number" class="form-control" placeholder="Podaj odległość" id="y" name="to" data-id="'+count+'"/>';
                 zawartosc_pozycji += ' <button id="del" name="del" onclick="usunPozycje(this)" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>';
                 p.innerHTML = zawartosc_pozycji;
                 document.querySelector("#putin").appendChild(p);
@@ -42,8 +42,8 @@ p{
             }
             </script>
             <p id="putin"> <!-- .setAttribute('data-id',x); -->
-            Odległość od: <input type="text" class="form-control" placeholder="Podaj odległość" id="x" name="from" data-id="1"/>
-            Odległość do: <input type="text" class="form-control" placeholder="Podaj odległość" id="y" name="to" data-id="1"/>
+            Odległość od: <input type="number" class="form-control" placeholder="Podaj odległość" id="x" name="from" data-id="1"/>
+            Odległość do: <input type="number" class="form-control" placeholder="Podaj odległość" id="y" name="to" data-id="1"/>
             <button id="add" name="add" onclick="dodajPozycje()" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
             </p>
             </div>
