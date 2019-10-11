@@ -42,8 +42,9 @@ p{
             }
             </script>
             <p id="putin"> <!-- .setAttribute('data-id',x); -->
-            Od: <input type="text" class="form-control" id="x" name="from" data-id="1" style="width: 30%;"/>
-            Do: <input type="text" class="form-control" id="y" name="to" data-id="1" style="width: 30%;"/>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Od:" id="x" name="from" data-id="1" style="width: 30%;"/>
+                <input type="text" class="form-control" placeholder="Do:" id="y" name="to" data-id="1" style="width: 30%;"/>
             <button id="add" name="add" onclick="dodajPozycje()" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button>
             </p>
             </div>
