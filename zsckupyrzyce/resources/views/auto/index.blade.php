@@ -7,7 +7,7 @@ p{
     margin: 0;
 }
 </style>
-<h1>Oblicz poziom zanieczyszen auta</h1>
+<h1>Oblicz poziom zanieczyszeń auta</h1>
 <div class="panel">
     <script type="text/javascript"> 
  
@@ -34,18 +34,17 @@ p{
                 p.classList = "input-group mb-3";
                 p.setAttribute('data-id', count);
                 var zawartosc_pozycji ='';
-                zawartosc_pozycji += '<p><input type="text" class="form-control" placeholder="Od:" id="y" name="from" data-id="'+count+'"/><input type="text" class="form-control" placeholder="Paliwo:" id="paliwo" name="from" data-id="'+count+'" /></p><p><input type="text" class="form-control" placeholder="Do:" id="x" name="to" data-id="'+count+'" /><input type="text" class="form-control" placeholder="Średnie spalanie:" id="ssp" name="from" data-id="'+count+'" /></p><button id="del" name="del" onclick="usunPozycje(this)" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>';
+                zawartosc_pozycji += '<p><input type="text" class="form-control" placeholder="Od:" id="y" name="from" data-id="'+count+'"/><input type="text" class="form-control" placeholder="Paliwo:" id="paliwo" name="from" data-id="'+count+'" /></p><p><input type="text" class="form-control" placeholder="Do:" id="x" name="to" data-id="'+count+'" /><input type="text" class="form-control" placeholder="Średnie spalanie:" id="ssp" name="from" data-id="'+count+'" /></p><button id="del" name="del" onclick="usunPozycje('+count+')" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>';
                 p.innerHTML = zawartosc_pozycji;
                 document.querySelector("#putin").appendChild(p);
             }
-            function usunPozycje(obiekt){
-                console.log(obiekt);
-                
+            function usunPozycje(){
+                count--;
 
+                console.log();
             }
             </script>
             <div id="putin"> <!-- .setAttribute('data-id',x); -->
-                
             <div class="input-group mb-3">
                 <p><input type="text" class="form-control" placeholder="Od:" id="y" name="from" data-id="1" />
                 <input type="text" class="form-control" placeholder="Paliwo:" id="paliwo" name="from" data-id="1" /></p>
