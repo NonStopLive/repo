@@ -1,4 +1,7 @@
+
+@if(Route::currentRouteName() == 'kalkulator')
 @include('head')
+@endif
 <style>
 p{
     margin: 0;

@@ -89,10 +89,19 @@
             -o-animation: flickerAnimation 1s infinite;
             animation: flickerAnimation 1s infinite;
             }
+            #welcome {
+            
+display: block;
+ 
+height: 100vh;
+width: 100%;
+margin: 33vh 0;
+
+            }
         </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
+    <body onkeypress="myFunction(event)">
+        <div id="welcome" class="flex-center position-ref full-height">
             {{-- @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -107,12 +116,29 @@
                 </div>
             @endif --}}
 
-            <div class="content">
+            <div class="content"  style="opacity:1;transition:0.5s all ease-in-out;">
                 <div class="title m-b-md">
                     Projekt ZSCKU PYRZYCE
                 </div>
-                <div class="animate-flicker"> SPACJA </div>
+                <div class="animate-flicker">
+                    <a href="http://127.0.0.1:8000/kalkulator"> ENTER </a>
+                    <p id="demo"></p>
+                  
+                </div>
             </div>
+            <div class="second" style="opacity:0;transition:0.5s all ease-in-out;">
+              @include('auto.index')
+            </div>
+            <script>    
+                    function myFunction(event) {
+                        var x = event.which || event.keyCode;
+                       // document.getElementById("demo").innerHTML = "The Unicode value is: " + x;
+                        if(parseInt(x) == 13)  {
+                           document.querySelector(".content").style.opacity = '0';
+                           document.querySelector(".second").style.opacity = '1';
+                        }
+                    }
+                </script>
         </div>
     </body>
 </html>
