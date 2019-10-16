@@ -18,6 +18,8 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                background-color: black;
+                font-size: 40px;
             }
 
             .full-height {
@@ -45,7 +47,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 80px;
             }
 
             .links > a {
@@ -62,31 +64,31 @@
                 margin-bottom: 30px;
             }
             @keyframes flickerAnimation {
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-@-o-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-@-moz-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-@-webkit-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-.animate-flicker {
-   -webkit-animation: flickerAnimation 1s infinite;
-   -moz-animation: flickerAnimation 1s infinite;
-   -o-animation: flickerAnimation 1s infinite;
-    animation: flickerAnimation 1s infinite;
-}
+                0%   { opacity:1; }
+                50%  { opacity:0; }
+                100% { opacity:1; }
+            }
+            @-o-keyframes flickerAnimation{
+                0%   { opacity:1; }
+                50%  { opacity:0; }
+                100% { opacity:1; }
+            }
+            @-moz-keyframes flickerAnimation{
+                0%   { opacity:1; }
+                50%  { opacity:0; }
+                100% { opacity:1; }
+            }
+            @-webkit-keyframes flickerAnimation{
+                0%   { opacity:1; }
+                50%  { opacity:0; }
+                100% { opacity:1; }
+            }
+            .animate-flicker {
+            -webkit-animation: flickerAnimation 1s infinite;
+            -moz-animation: flickerAnimation 1s infinite;
+            -o-animation: flickerAnimation 1s infinite;
+            animation: flickerAnimation 1s infinite;
+            }
         </style>
     </head>
     <body>
@@ -109,10 +111,8 @@
                 <div class="title m-b-md">
                     Projekt ZSCKU PYRZYCE
                 </div>
-
-                
+                <div class="animate-flicker"> SPACJA </div>
             </div>
-            <div class="animate-flicker">Loading...</div>
         </div>
     </body>
 </html>
