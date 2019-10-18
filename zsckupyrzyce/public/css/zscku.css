@@ -1,2 +1,91 @@
 button{height: 150px;
 }
+
+#welcome html, #welcome body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    font-size: 40px;
+}
+
+#welcome .full-height {
+    height: 100vh;
+}
+
+#welcome .flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#welcome .position-ref {
+    position: relative;
+}
+
+#welcome .top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+#welcome .content {
+    text-align: center;
+}
+
+#welcome .title {
+    font-size: 80px;
+}
+
+#welcome .links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#welcome .m-b-md {
+    margin-bottom: 30px;
+}
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+#welcome .animate-flicker {
+-webkit-animation: flickerAnimation 1s infinite;
+-moz-animation: flickerAnimation 1s infinite;
+-o-animation: flickerAnimation 1s infinite;
+animation: flickerAnimation 1s infinite;
+}
+#home {
+            
+    display: block;
+     
+    height: 100vh;
+    width: 100%;
+    margin: 33vh 0;
+    
+                }
+                
