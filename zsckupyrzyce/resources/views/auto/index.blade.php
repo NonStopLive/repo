@@ -44,6 +44,8 @@ p{
                 console.log();
             }
             </script>
+            <form method="post" action="{{route('kalkulator_wynik')}}">
+               @csrf
             <div id="putin"> <!-- .setAttribute('data-id',x); -->
             <div class="input-group mb-3">
                 <p><input type="text" class="form-control" placeholder="Od:" id="y" name="from" data-id="1" />
@@ -57,7 +59,8 @@ p{
             </div>
             <div class="input-group-append">
             <div class="input-group mb-3">
-            <!-- <input type="button" id="oblicz" value="PRZELICZ" onclick="oblicz()"/> -->
+            <input type="submit" id="oblicz" value="PRZELICZ" onclick="oblicz()"/>
+        </form>
             <div class="wynik">
                 
 </div>
