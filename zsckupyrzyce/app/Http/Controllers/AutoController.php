@@ -24,7 +24,7 @@ class AutoController extends Controller
             //curl_setopt($ch, CURLOPT_NOBODY, TRUE); // remove body
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             $result = curl_exec($ch);
-             return $result;
+           //  return $result;
             // curl_close($ch);
 
 //         curl --include \
