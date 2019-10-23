@@ -34,13 +34,14 @@ p{
                 p.classList = "input-group mb-3";
                 p.setAttribute('data-id', count);
                 var zawartosc_pozycji ='';
-                zawartosc_pozycji += '<p><input type="text" class="form-control" placeholder="Od:" id="y" name="from" data-id="'+count+'"/><input type="text" class="form-control" placeholder="Paliwo:" id="paliwo" name="fuel" data-id="'+count+'" /></p><p><input type="text" class="form-control" placeholder="Do:" id="x" name="destination" data-id="'+count+'" /><input type="text" class="form-control" placeholder="Średnie spalanie:" id="ssp" name="fuel usage" data-id="'+count+'" /></p><button id="del" name="del" onclick="usunPozycje('+count+')" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>';
+                zawartosc_pozycji += '<p><input type="text" class="form-control" placeholder="Od:" id="y" name="from" data-id="'+count+'"/><input type="text" class="form-control" placeholder="Paliwo:" id="paliwo" name="fuel" data-id="'+count+'" /></p><p><input type="text" class="form-control" placeholder="Do:" id="x" name="destination" data-id="'+count+'" /><input type="text" class="form-control" placeholder="Średnie spalanie:" id="ssp" name="fuel usage" data-id="'+count+'" /></p><button type="button" id="del" name="del" onclick="usunPozycje('+count+')" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">-</button>';
                 p.innerHTML = zawartosc_pozycji;
                 document.querySelector("#putin").appendChild(p);
             }
             function usunPozycje(){
-                count--;
-                console.log();
+                console.log(count);
+                
+
             }
             </script>
             <form method="post" action="{{route('kalkulator_wynik')}}">
