@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Raport;
 use Illuminate\Http\Request;
 
 class AutoController extends Controller
@@ -63,8 +64,22 @@ class AutoController extends Controller
         // echo $request->input('odleglosc');
         // return "wynik";
     
+        $rezultat = json_decode($result,true);
+      // echo "<h1>".($rezultat['features'][0]['properties']['segments'][0]['distance']/1000)."</h1>";
+ 
+        $raport=new Raport();
+        $raport->odleglosc=($rezultat['features'][0]['properties']['segments'][0]['distance']/1000);
+        $raport->czas_dojazdu=(gmdate("H:i:s",($rezultat['features'][0]['properties']['segments'][0]['duration'])));
+        $raport->pez="0";
+        $raport->visitor=$_SERVER['REMOTE_ADDR'];
+        $raport->szp=$request->input('spalanie');
+        $raport->paliwo=$request->input('paliwo');
+        $raport->save();
 
-        return view("auto.test")->with('response',($result))->with('lat_from',$lat_from)->with('lon_from',$lon_from)->with('lat_to',$lat_to)->with('lon_to',$lon_to);
+        return view("auto.test")->with("odleglosc",$raport->odleglosc)->with("czas",$raport->czas_dojazdu)->with('response',($result))->with('lat_from',$lat_from)->with('lon_from',$lon_from)->with('lat_to',$lat_to)->with('lon_to',$lon_to);
+    }
+    public function redirectKalkulator() {
+        return redirect(route("kalkulator"));
     }
     public function wynik2() {
         

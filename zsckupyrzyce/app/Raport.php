@@ -11,6 +11,7 @@ class Raport extends Model
      *
      * @var array
      */
+    protected $table = 'raport';
     protected $fillable = [
         'odleglosc', 'czas_dojazdu', 'pez', 'visitor', 'szp', 'paliwo',
     ];

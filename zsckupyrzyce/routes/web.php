@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('/kalkulator', "AutoController@index")->name("kalkulator");
 
+Route::get('/kalkulator/wynik', "AutoController@redirectKalkulator")->name("redirectKalkulator");
 Route::post('/kalkulator/wynik', "AutoController@wynik")->name("kalkulator_wynik");
 
 Route::get('/kalkulator/test','AutoController@wynik2')->name("testWynik");

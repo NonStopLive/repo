@@ -16,11 +16,12 @@ class CreateRaportTable extends Migration
         Schema::create('raport', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->float('odleglosc'); // odleglosc (float)
-            $table->time('czasd_dojazdu'); // czas_dojazdu (time)
+            $table->time('czas_dojazdu'); // czas_dojazdu (time)
             $table->float('pez'); // poziom emisji zanieczyszczenia (float)
             $table->ipAddress('visitor'); // ip (varchar,255)
             $table->float('szp'); // srednie zuzycie paliwa (flaot)
             $table->integer('paliwo'); // rodzaj paliwa (INT)
+            $table->timestamps();
         });
 
     }
