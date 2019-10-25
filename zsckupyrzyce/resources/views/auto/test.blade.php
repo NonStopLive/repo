@@ -20,8 +20,10 @@
         </style>
     </head>
     <body>
+        <h1> z miasta: {{$miasto_od}} do miasta {{$miasto_do}} </h1>
+        Przejedziesz {{$odleglosc}} w czasie {{$czas}}
         <div id="dane">
-            {!! $response !!}
+            {{-- {!! $response !!} --}}
         </div>
         <div id="map"></div>
         <script>
