@@ -59,7 +59,7 @@ margin: 10px 0;
                 <input type="text" required class="form-control from_api_city" placeholder="Od: Szczecin" id="y" name="from" data-id="1" />
                 <select class="form-control" id="paliwo" name="paliwo" data-id="1">
                     <option value="pb95">Benzyna</option>
-                    <option value="on">Deasel</option>
+                    <option value="on">Diesel</option>
                     <option value="lpg">LPG</option>
                 </select>
                 <!-- <input type="text"  required class="form-control" placeholder="Paliwo:"  id="paliwo" name="paliwo" data-id="1" /> -->
@@ -102,7 +102,7 @@ var request = new XMLHttpRequest();
 $(document).ready(function() {
     console.log("fdsf");
 })
-$(".to_api_city, .from_api_city").keyup(function(){
+$(".to_api_city, .from_api_city").blur(function(){
     console.log($(this).val());
 
     

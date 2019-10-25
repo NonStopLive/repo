@@ -193,6 +193,7 @@
     <img src="https://image.flaticon.com/icons/svg/1505/1505581.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
     
     {{$spalanie*365}} [litrów]
+    {{$czas2}}
   </div>
 </div>
 </div>

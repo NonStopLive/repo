@@ -43,7 +43,15 @@ class AutoController extends Controller
  
         $raport=new Raport();
         $raport->odleglosc=($rezultat['features'][0]['properties']['segments'][0]['distance']/1000);
+
+        if ((float)$rezultat['features'][0]['properties']['segments'][0]['duration']>(24*60*60)){ 
+            $data=date("d H:i:s",strtotime("-1 day",($rezultat['features'][0]['properties']['segments'][0]['duration'])));
+            $raport->czas_dojazdu=$data;
+        }
+        else{
+        
         $raport->czas_dojazdu=(gmdate("H:i:s",($rezultat['features'][0]['properties']['segments'][0]['duration'])));
+        }
         $raport->pez="0";
         $raport->visitor=$_SERVER['REMOTE_ADDR'];
         $raport->szp=$request->input('spalanie');
@@ -66,7 +74,7 @@ class AutoController extends Controller
             "on" => "0.0316"
         );
 
-        return view("auto.test")->with("odleglosc",$raport->odleglosc)->with('emisja_c02',$emisja_c02)->with('rodzaj_paliwa',$raport->paliwo)->with("cena_paliwa",$sortedPrices)->with('miasto_od',$request->input('from'))->with('miasto_do',$request->input('to'))->with('spalanie',$raport->szp)->with("czas",$raport->czas_dojazdu)->with('response',($result))->with('lat_from',$lat_from)->with('lon_from',$lon_from)->with('lat_to',$lat_to)->with('lon_to',$lon_to);
+        return view("auto.test")->with("czas2",($rezultat['features'][0]['properties']['segments'][0]['duration']))->with("odleglosc",$raport->odleglosc)->with('emisja_c02',$emisja_c02)->with('rodzaj_paliwa',$raport->paliwo)->with("cena_paliwa",$sortedPrices)->with('miasto_od',$request->input('from'))->with('miasto_do',$request->input('to'))->with('spalanie',$raport->szp)->with("czas",$raport->czas_dojazdu)->with('response',($result))->with('lat_from',$lat_from)->with('lon_from',$lon_from)->with('lat_to',$lat_to)->with('lon_to',$lon_to);
     }
     public function redirectKalkulator() {
         return redirect(route("kalkulator"));
