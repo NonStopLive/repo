@@ -1,28 +1,90 @@
-<html>
-    <head>
-        <title>A fullscreen ORS webmap</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css"  />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-contextmenu/1.4.0/leaflet.contextmenu.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-contextmenu/1.4.0/leaflet.contextmenu.js"></script>
-        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-        <style>
-            body {
-                padding: 0;
-                margin: 0;
-            }
-            html, body, #map {
-                height: 100%;
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="dane">
-            {!! $response !!}
-        </div>
+@include('head')
+    <section class="formularz">
+    @include('auto.index')
+    </section>
+    <h1 style="text-align: center;background: #b76d11;color: #fff;margin: 0;padding: 20px 0;font-size: 2rem;font-weight: 300;">Podsumowanie</h1>
+        <section class="dane">
+        <div class="container">
+            <h1 style="text-align: center;color: #fff;margin: 0 0 50px 0;display: block;">Droga z {{$miasto_od}} <img src="https://image.flaticon.com/icons/svg/2164/2164561.svg" width="48" style="filter: invert(1);transform: rotate(90deg);" /> {{$miasto_do}}</h1>
+            <div class="row">
+            
+            <div class="col-md-3">
+            <div class="card">
+  <div class="card-body">
+    <h4>Odległosc</h4>
+    <img src="https://image.flaticon.com/icons/svg/453/453552.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
+    {{number_format($odleglosc,2)}} [km]
+  </div>
+</div>
+            </div>
+                        <div class="col-md-3">
+            <div class="card">
+  <div class="card-body">
+    <h4>Czas</h4>
+    <img src="https://image.flaticon.com/icons/svg/149/149235.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
+    {{$czas}}
+  </div>
+</div>
+            </div>
+                        <div class="col-md-3">
+            <div class="card">
+  <div class="card-body">
+    <h4>Sr. zuzycie paliwa</h4>
+    <img src="https://image.flaticon.com/icons/svg/865/865998.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
+    
+    {{number_format($spalanie,2)}} [litrów]
+  </div>
+</div>
+            </div>
+                        <div class="col-md-3">
+            <div class="card">
+  <div class="card-body">
+    <h4>Cena paliwa</h4>
+    
+    <img src="https://image.flaticon.com/icons/svg/584/584067.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
+
+{{number_format(floatval(str_replace(',', '.', str_replace('.', '', $cena_paliwa[$rodzaj_paliwa][1]))) * ($spalanie*($odleglosc/100)),2)}} [PLN]  
+</div>
+</div>
+            </div>
+ 
+
+            </div>
+            </div>
+        </section>
+        <div class="col-md-12" style="
+    /* margin: 50px auto 0 auto; */
+    background: #0e1216;
+    padding: 50px 0;
+">
+                <div class="card" style="
+    border: 0;
+">
+  <div class="row">
+    <div class="col-md-4">
+        
+        <img src="https://image.flaticon.com/icons/svg/18/18229.svg" style="filter: invert(1);width: 120px;display: block;margin: 32px auto;">
+    </div>
+    <div class="col-md-8" style="
+    text-align: left;
+">
+        
+    <h4 style="
+">Poziom emisji C02</h4>
+    
+    
+
+    <h1 style="
+    display: inline;
+    font-size: 90px;
+">{{number_format(($spalanie)*$emisja_c02[$rodzaj_paliwa]*$odleglosc,2)}} [CO<sub>2</sub> kg]</h1>
+    </div>
+</div>
+</div>
+      
+            </div>
+        <section class="map">
+            <h1 style="text-align: center;background: #3487fb;color: #fff;margin: 0;padding: 20px 0;font-size: 2rem;font-weight: 300;">Trasa</h1>
         <div id="map"></div>
         <script>
              var map = L.map('map',{
@@ -98,5 +160,44 @@
             }
 
             </script>
+            </section>
+                            <h1 style="text-align: center;background: #309c56;color: #fff;margin: 0;padding: 20px 0;font-size: 2rem;font-weight: 300;">Wnioski</h1>
+            <section class="wnioski">
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-4">
+                                  <div class="card">
+  <div class="card-body">
+    <h4>Roczny koszt paliwa</h4>
+<img src="https://image.flaticon.com/icons/svg/1623/1623344.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
+    
+{{number_format(floatval(str_replace(',', '.', str_replace('.', '', $cena_paliwa[$rodzaj_paliwa][1]))) * ($spalanie*($odleglosc/100)) * 365,2)}} [PLN]  
+  </div>
+</div>
+                    </div>
+                    <div class="col-md-4">
+                              <div class="card">
+  <div class="card-body">
+    <h4>Roczne zanieczyszczenia</h4>
+    <img src="https://image.flaticon.com/icons/svg/80/80379.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
+    {{number_format(($spalanie)*$emisja_c02[$rodzaj_paliwa]*$odleglosc*356,2)}} [CO<sub>2</sub> kg]
+  </div>
+</div>
+</div>
+<div class="col-md-4">
+          <div class="card">
+  <div class="card-body">
+    <h4>Roczne zuzycie paliwa</h4>
+    
+    <img src="https://image.flaticon.com/icons/svg/1505/1505581.svg" style="    filter: invert(1);width: 48px;display: block;margin: 32px auto;" />
+    
+    {{$spalanie*365}} [litrów]
+  </div>
+</div>
+</div>
+</div>
+                </div>
+            </section>
     </body>
 </html>

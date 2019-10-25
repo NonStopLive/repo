@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Raport;
 use Illuminate\Http\Request;
+use Goutte;
 
 class AutoController extends Controller
 {
+    public $paliwa_ceny = array();
     public function index() { 
         return view("auto.index");
     }
@@ -16,22 +18,6 @@ class AutoController extends Controller
         $key = '5b3ce3597851110001cf6248b9d8a411b9b7449d9df6822f0f7ac292';
         
         $ch = curl_init();
-
-        // Pobranie wspolrzednych na podstawie miejscowosci
-
-
-            // curl_setopt($ch, CURLOPT_URL, $url);
-            // curl_setopt($ch, CURLOPT_HEADER, false);
-            // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            // 'Content-Type: application/json; charset=utf-8',
-            // 'Accept: application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8'
-            // ));
-            // //curl_setopt($ch, CURLOPT_NOBODY, TRUE); // remove body
-            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-            // $result = curl_exec($ch);
-            //  return $result;
-
-
 
         //Wyznaczenie routy 
 
@@ -51,19 +37,7 @@ class AutoController extends Controller
             //curl_setopt($ch, CURLOPT_NOBODY, TRUE); // remove body
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             $result = curl_exec($ch);
-            // return $result;
-            // curl_close($ch);
-
-//         curl --include \
-//      --header "Content-Type: application/json; charset=utf-8" \
-//      --header "Accept: application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8" \
-//   'https://api.openrouteservice.org/v2/directions/driving-car?api_key=your-api-key&start=8.681495,49.41461&end=8.687872,49.420318'
-
-       // return dd($request->all());
-
-        // echo $request->input('odleglosc');
-        // return "wynik";
-    
+            
         $rezultat = json_decode($result,true);
       // echo "<h1>".($rezultat['features'][0]['properties']['segments'][0]['distance']/1000)."</h1>";
  
@@ -76,7 +50,23 @@ class AutoController extends Controller
         $raport->paliwo=$request->input('paliwo');
         $raport->save();
 
-        return view("auto.test")->with("odleglosc",$raport->odleglosc)->with("czas",$raport->czas_dojazdu)->with('response',($result))->with('lat_from',$lat_from)->with('lon_from',$lon_from)->with('lat_to',$lat_to)->with('lon_to',$lon_to);
+            $sortedPrices = array();
+        foreach($this->getCurrentPrices() as $key => $prices) {
+            if(($key %4 )==0) { 
+                $indeks = $prices;
+            } else {
+                $sortedPrices[$indeks][] = $prices;
+            }
+
+        }
+        // zrodlo http://tarnogrod.oze.eurzad.eu/?page_id=79
+        $emisja_c02 = array(
+            "pb95" => "0.0295",
+            "lpg" => "0.0225",
+            "on" => "0.0316"
+        );
+
+        return view("auto.test")->with("odleglosc",$raport->odleglosc)->with('emisja_c02',$emisja_c02)->with('rodzaj_paliwa',$raport->paliwo)->with("cena_paliwa",$sortedPrices)->with('miasto_od',$request->input('from'))->with('miasto_do',$request->input('to'))->with('spalanie',$raport->szp)->with("czas",$raport->czas_dojazdu)->with('response',($result))->with('lat_from',$lat_from)->with('lon_from',$lon_from)->with('lat_to',$lat_to)->with('lon_to',$lon_to);
     }
     public function redirectKalkulator() {
         return redirect(route("kalkulator"));
@@ -87,5 +77,14 @@ class AutoController extends Controller
         $lat='49.41461';
         return view("auto.test")->with('lat',$lat)->with('lon',$lon);
     }
+    public function getCurrentPrices() {
+     $crawler = Goutte::request('GET', 'http://paliwa.pl/monitoring-cen-paliw/wszystko-o-cenach');
+              
+        
+          $crawler->filter('#Ceny > div.mod_CenyHurtowePaliw.ceny-panel > div.kontener-text > table  td')->each(function ($node) {
+        $this->paliwa_ceny[] = $node->text();
+        });
+        return $this->paliwa_ceny;
+}
 
 }

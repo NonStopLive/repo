@@ -20,7 +20,7 @@ class CreateRaportTable extends Migration
             $table->float('pez'); // poziom emisji zanieczyszczenia (float)
             $table->ipAddress('visitor'); // ip (varchar,255)
             $table->float('szp'); // srednie zuzycie paliwa (flaot)
-            $table->integer('paliwo'); // rodzaj paliwa (INT)
+            $table->string('paliwo'); // rodzaj paliwa
             $table->timestamps();
         });
 

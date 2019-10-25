@@ -1,13 +1,19 @@
 
-@if(Route::currentRouteName() == 'kalkulator')
+ @if(Route::currentRouteName() == 'kalkulator')
 @include('head')
-@endif
+ @endif 
 <style>
 p{
     margin: 0;
 }
+.form-control {
+margin: 10px 0;
+}
 </style>
-<h1>Oblicz poziom zanieczyszeń auta</h1>
+@if(Route::currentRouteName() != '/')
+        <h1 class="heading" style="background:#980505;">Oblicz poziom zanieczyszeń auta</h1>
+        @endif
+
 <div class="panel">
     <script type="text/javascript"> 
  
@@ -47,27 +53,40 @@ p{
             <form method="post" action="{{route('kalkulator_wynik')}}">
                @csrf
             <div id="putin"> <!-- .setAttribute('data-id',x); -->
-            <div class="input-group mb-3">
-                <p><input type="text" class="form-control from_api_city" placeholder="Od:" id="y" name="from" data-id="1" />
-                <input type="text" class="form-control" placeholder="Paliwo:"  id="paliwo" name="paliwo" data-id="1" /></p>
-                <p><input type="text" class="form-control to_api_city" placeholder="Do:" id="x" name="to" data-id="1" />
-                <input type="text" class="form-control" placeholder="Średnie spalanie:" id="ssp" name="spalanie" data-id="1" /></p>
-                Hidden:
-                <br/>
-                <input type="text" class="form-control from_api_city_hidden_lon" placeholder="Średnie spalanie:" id="from_api_city_hidden_lon" name="from_api_city_hidden_lon" data-id="1" /></p>
-                <input type="text" class="form-control from_api_city_hidden_lat" placeholder="Średnie spalanie:" id="from_api_city_hidden_lat" name="from_api_city_hidden_lat" data-id="1" /></p>
-                <input type="text" class="form-control to_api_city_hidden_lon" placeholder="Średnie spalanie:" id="to_api_city_hidden_lon" name="to_api_city_hidden_lon" data-id="1" /></p>
-                <input type="text" class="form-control to_api_city_hidden_lat" placeholder="Średnie spalanie:" id="to_api_city_hidden_lat" name="to_api_city_hidden_lat" data-id="1" /></p>
-
-            <!-- <button id="add" name="add" onclick="dodajPozycje()" class="btn btn-outline-primary btn-rounded waves-effect" style="border-radius:50%;height:40px;width:40px;">+</button> -->
+            <div class="container">
+            <div class="row" style="    margin: 100px 0 0 0;background: #fff;padding: 50px 50px 25px 50px;">
+                <div class="col-md-6">
+                <input type="text" required class="form-control from_api_city" placeholder="Od: Szczecin" id="y" name="from" data-id="1" />
+                <select class="form-control" id="paliwo" name="paliwo" data-id="1">
+                    <option value="pb95">Benzyna</option>
+                    <option value="on">Deasel</option>
+                    <option value="lpg">LPG</option>
+                </select>
+                <!-- <input type="text"  required class="form-control" placeholder="Paliwo:"  id="paliwo" name="paliwo" data-id="1" /> -->
+                </div>
+                <div class="col-md-6">
+                <input type="text"  required class="form-control to_api_city" placeholder="Do: Warszawa" id="x" name="to" data-id="1" />
+                <input type="text"  required class="form-control" placeholder="Średnie spalanie:" id="ssp" name="spalanie" data-id="1" />
+                </div>
+                <div class="col-md-12">
+                <input type="hidden" class="form-control from_api_city_hidden_lon"  id="from_api_city_hidden_lon" name="from_api_city_hidden_lon" data-id="1" /></p>
+                <input type="hidden" class="form-control from_api_city_hidden_lat"  id="from_api_city_hidden_lat" name="from_api_city_hidden_lat" data-id="1" /></p>
+                <input type="hidden" class="form-control to_api_city_hidden_lon" id="to_api_city_hidden_lon" name="to_api_city_hidden_lon" data-id="1" /></p>
+                <input type="hidden" class="form-control to_api_city_hidden_lat" id="to_api_city_hidden_lat" name="to_api_city_hidden_lat" data-id="1" /></p>
+                </div>
+                <button type="submit" id="oblicz" class="btn btn-primary" style="margin: 20px auto;padding: 10px 75px;" onclick="oblicz()"><i class="fa fa-calculator" aria-hidden="true"></i>
+Przelicz</button>
+                </div>
+                
+                
             </div>
       
  
             </div>
-            <div class="input-group-append">
-            <div class="input-group mb-3">
-            <input type="submit" id="oblicz" value="PRZELICZ" onclick="oblicz()"/>
+             
+            
         </form>
+
             <div class="wynik">
                 
 </div>
@@ -111,7 +130,7 @@ request.onreadystatechange = function () {
     if($(obiekt).hasClass('from_api_city')) { 
     
     $(".to_api_city_hidden_lat").val(data.features[0].geometry.coordinates[0]);
-    $(".to_api_city_hidden_lon").val(data.features[0].geometry.coordinates[1]);        
+    $(".to_api_city_hidden_lon").val(data.features[0].geometry.coordinates[1]);
     }
     
 

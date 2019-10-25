@@ -18,8 +18,9 @@
   * 5# przygotujcie wzor pod wylicznie poziomu zanieczyszczenia z aut tj dane wejsciowe ktore powinien podac uzytkownik
   */
 Route::get('/', function () {
-    return view('welcome');
-});
+    //return view('welcome');
+    return redirect(route('kalkulator'));
+})->name('/');
 
 Route::get('/kalkulator', "AutoController@index")->name("kalkulator");
 

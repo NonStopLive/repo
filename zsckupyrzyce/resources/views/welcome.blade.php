@@ -22,7 +22,7 @@
                     Projekt ZSCKU PYRZYCE
                 </div>
                 <div class="animate-flicker">
-                    <a href="http://127.0.0.1:8000/kalkulator"> ENTER </a>
+                    <a href="{{route('kalkulator')}}"> ENTER </a>
                     <p id="demo"></p>
                   
                 </div>

@@ -16,8 +16,10 @@ class CreateMiejsceTable extends Migration
         Schema::create('miejsce', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_raport');
-            $table->float('lat');
-            $table->float('lon');
+            $table->float('lat_from');
+            $table->float('lon_from');
+            $table->float('lat_to');
+            $table->float('lon_to');
             $table->timestamps();
         });
     }
